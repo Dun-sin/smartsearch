@@ -14,7 +14,13 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

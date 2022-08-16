@@ -1,15 +1,90 @@
 .container {
-	padding: 0 2rem;
+	margin-top: 0.5rem;
+	padding: 0 8rem;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header > p {
+	font-size: 1.6rem;
+}
+
+.header > p span {
+	font-weight: 800;
+}
+
+.header > div {
+	width: calc(10vw + 3rem);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header > div span {
+	font-size: 1.2rem;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.header > div span:last-of-type {
+	background-color: var(--primary-color);
+	color: var(--text-color);
+	width: 100px;
+	height: 35px;
+	display: grid;
+	place-items: center;
+	border-radius: 10px;
+}
+
+.headerText {
+	color: var(--primary-color);
 }
 
 .main {
-	min-height: 100vh;
+	min-height: 80vh;
 	padding: 4rem 0;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+}
+
+.section p {
+	color: var(--secondary-color);
+	margin: 0;
+}
+
+.section p:first-of-type {
+	font-size: calc(var(--general-font-size) + 4vw);
+	margin-top: calc(var(--general-font-size) + 10vh);
+	line-height: calc(var(--general-font-size) + 9vh);
+}
+
+.section p:first-of-type span {
+	color: var(--primary-color);
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.section p:last-of-type {
+	font-size: calc(var(--general-font-size) + 1vw);
+	font-weight: 200;
+	margin: 0.3rem 0 0.4rem 0;
+}
+
+.section div {
+	background-color: var(--primary-color);
+	height: 50px;
+	width: 150px;
+
+	font-size: 1.5rem;
+	border-radius: 10px;
+	color: var(--text-color);
+
+	display: grid;
+	place-items: center;
+
+	cursor: pointer;
 }
 
 @media (max-width: 600px) {

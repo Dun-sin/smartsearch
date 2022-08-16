@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link'
+import Image from 'next/image'
+
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -11,25 +13,38 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <header>
-        <h2><span>S</span>mart<span>S</span>earch</h2>
+      <header className={styles.header}>
+        <p className={`${styles.headerText}`}><span>S</span>mart<span>S</span>earch</p>
 
         <div>
-          <Link href="/">Login</Link>
           <Link href="/">
-            <div>
+            <span className={styles.headerText}>Login</span>
+          </Link>
+          <Link href="/">
+            <span>
               SignUp
-            </div>
+            </span>
           </Link>
         </div>
       </header>
 
       <main className={styles.main}>
-        <section>
-          <h1>Find the <span>Right</span><br />smartphone for you</h1>
+        <section className={styles.section}>
+          <p>Find the <span>RIGHT</span><br />smartphone for you</p>
           <p>Get the phone that fits your life.</p>
-          <div>Start Here</div>
+          <Link href="/">
+            <div>Start Here</div>
+          </Link>
         </section>
+
+        {/* <Image
+          loading='lazy'
+          src="/assets/landing-page-image.png"
+          alt='3d phone illustration'
+          quality='100'
+          height='500'
+          width='600'
+        /> */}
       </main>
     </div>
   );
