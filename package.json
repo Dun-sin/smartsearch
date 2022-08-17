@@ -10,7 +10,9 @@
 		"semantic-release": "semantic-release --branches main"
 	},
 	"dependencies": {
+		"axios": "^0.27.2",
 		"next": "12.2.5",
+		"nightmare": "^3.0.2",
 		"react": "18.2.0",
 		"react-dom": "18.2.0"
 	},
