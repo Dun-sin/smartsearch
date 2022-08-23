@@ -32,7 +32,7 @@ export default function Home() {
         <section className={styles.section}>
           <p>Find the <span>RIGHT</span><br />smartphone for you</p>
           <p>Get the phone that fits your life.</p>
-          <Link href="/">
+          <Link href="./phones">
             <div>Start Here</div>
           </Link>
         </section>

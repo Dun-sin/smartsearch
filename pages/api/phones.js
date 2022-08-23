@@ -2,20 +2,19 @@ const Nightmare = require('nightmare');
 const nightmare = Nightmare();
 
 export default async function handler(req, res) {
-	// const { method } = req;
+	const { method } = req;
 
-	try {
-		const result = await getPhones();
-		res.status(200).json({ result });
-	} catch (error) {
-		res.send(500).json({ message: error });
+	switch (method) {
+		case 'GET':
+			const result = await getPhones();
+			res.status(200).json(result);
 	}
 }
 
 async function getPhones() {
 	return await nightmare
 		.goto('https://www.gsmarena.com/')
-		.type('#topsearch-text', 'xiaomi')
+		.type('#topsearch-text', 'samsung')
 		.click('.go')
 		.wait('.makers > ul a')
 		.evaluate(() => {
@@ -35,6 +34,9 @@ async function getPhones() {
 			return phones;
 		})
 		.end()
-		.then((link) => link)
-		.catch((err) => `Search Failed: ${err}`);
+		.then((link) => {
+			console.log(link);
+			return link;
+		})
+		.catch((err) => `${err}`);
 }

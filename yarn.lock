@@ -1137,7 +1137,9 @@
   dependencies:
     "keypress" "0.1.x"
 
-"commitizen@^4.0.3":
+"commitizen@^4.0.3", "commitizen@^4.2.5":
+  "integrity" "sha512-9sXju8Qrz1B4Tw7kC5KhnvwYQN88qs2zbiB8oyMsnXZyJ24PPGiNM3nHr73d32dnE3i8VJEXddBFIbOgYSEXtQ=="
+  "resolved" "https://registry.npmjs.org/commitizen/-/commitizen-4.2.5.tgz"
   "version" "4.2.5"
   dependencies:
     "cachedir" "2.3.0"
