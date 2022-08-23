@@ -2,6 +2,13 @@
 	min-height: 100vh;
 	flex-direction: column;
 	display: flex;
+	margin: 2rem;
+}
+
+.header {
+	max-width: 90vw;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
 }
 
@@ -9,7 +16,6 @@
 	font-size: calc(var(--general-font-size) + 1vw);
 	color: var(--primary-color);
 	font-weight: 600;
-	margin: 2rem 0 0.5rem 0;
 }
 
 .searchBar {
@@ -36,4 +42,21 @@
 
 .searchBar input:focus {
 	outline: none;
+}
+
+.result {
+	margin: 1rem 5rem 0 5rem;
+}
+
+.phone {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid var(--primary-color);
+	padding: 1rem;
+}
+
+.phone p {
+	margin-left: 1rem;
 }

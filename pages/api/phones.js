@@ -6,18 +6,21 @@ export default async function handler(req, res) {
 
 	switch (method) {
 		case 'GET':
+			// res.status(200).json('This works');
 			const result = await getPhones();
-			res.status(200).json(result);
+			await res.status(200).json(result);
 	}
 }
 
 async function getPhones() {
+	console.log('started');
 	return await nightmare
 		.goto('https://www.gsmarena.com/')
 		.type('#topsearch-text', 'samsung')
 		.click('.go')
 		.wait('.makers > ul a')
 		.evaluate(() => {
+			console.log('still going');
 			const phones = [];
 			const links = document.querySelectorAll('.makers > ul a');
 			links.forEach((link) => {
@@ -30,12 +33,13 @@ async function getPhones() {
 					phoneName,
 				});
 			});
+			console.log('got here');
 
 			return phones;
 		})
 		.end()
 		.then((link) => {
-			console.log(link);
+			console.log('done?');
 			return link;
 		})
 		.catch((err) => `${err}`);
