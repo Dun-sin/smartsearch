@@ -7,16 +7,16 @@ export default async function handler(req, res) {
 	switch (method) {
 		case 'GET':
 			// res.status(200).json('This works');
-			const result = await getPhones();
+			const result = await getPhones(req.query.phone);
 			await res.status(200).json(result);
 	}
 }
 
-async function getPhones() {
+async function getPhones(phone) {
 	console.log('started');
 	return await nightmare
 		.goto('https://www.gsmarena.com/')
-		.type('#topsearch-text', 'samsung')
+		.type('#topsearch-text', phone)
 		.click('.go')
 		.wait('.makers > ul a')
 		.evaluate(() => {

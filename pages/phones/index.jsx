@@ -5,7 +5,6 @@ import styles from '../../styles/Phone.module.css'
 import search from '../../assets/akar-icons_search.svg';
 
 export default function Phones() {
-  const [data, setData] = useState(null)
   const [isLoading, setLoading] = useState(false)
   const [result, setResult] = useState({})
 
@@ -13,14 +12,13 @@ export default function Phones() {
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      console.log(inputPhoneRef.current.value)
+      getPhones(inputPhoneRef.current.value)
       inputPhoneRef.current.value = ''
-      getPhones()
     }
   }
 
-  async function getPhones() {
-    let response = await fetch("http://localhost:3000/api/phones", {
+  async function getPhones(phone) {
+    let response = await fetch(`http://localhost:3000/api/phones?phone=${phone}`, {
       method: "GET",
     });
 
