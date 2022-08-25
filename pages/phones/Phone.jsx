@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Head from "next/head"
 import Image from "next/image"
@@ -21,6 +21,20 @@ export default function PhonePage({
   image, link, phoneName
 }) {
   const [phoneInfo, setInfo] = useState({})
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/phone?link=${link}`, {
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(data => {
+        setInfo(data)
+        setLoading(false)
+      })
+      .catch(err => console.log(err))
+  }, [link])
+
 
   return (
     <>
@@ -42,48 +56,44 @@ export default function PhonePage({
                 quality={100}
               />
             </div>
+            {isLoading ? <div>Loading Phone details</div> : (
+              <section className={styles.details}>
+                <div>
+                  <h3>Price:</h3>
+                  <p>{phoneInfo.Price ? phoneInfo.Price : 'Not available'}</p>
+                </div>
 
-            <section style={{ marginLeft: "10px" }}>
-              <div>
-                <h3>Price:</h3>
-                <p>{phoneInfo.price ? '' : 'Not available'}</p>
-              </div>
+                <div>
+                  <h3>Storage:</h3>
+                  <p>{phoneInfo.Memory ? phoneInfo.Memory : 'Not available'}</p>
+                </div>
 
-              <br />
+                <div>
+                  <h3>Camera:</h3>
+                  <p>{phoneInfo['Main Camera'] ? phoneInfo['Main Camera'].replaceAll('<br>', ' ') : 'Not available'}</p>
+                </div>
 
-              <div>
-                <h3>Storage:</h3>
-                <p>{phoneInfo.storage ? '' : 'Not available'}</p>
-              </div>
+                <div>
+                  <h3>Battery:</h3>
+                  <p>{phoneInfo.Battery ? phoneInfo.Battery : 'Not available'}</p>
+                </div>
 
-              <br />
+                <div>
+                  <h3>Display:</h3>
+                  <p>{phoneInfo.Display ? phoneInfo.Display : 'Not available'}</p>
+                </div>
 
-              <div>
-                <h3>Camera:</h3>
-                <p>{phoneInfo.camera ? '' : 'Not available'}</p>
-              </div>
+                <div>
+                  <h3>Platform:</h3>
+                  <p>{phoneInfo.Platform ? phoneInfo.Platform : 'Not available'}</p>
+                </div>
 
-              <br />
+                <div>
+                  <h3>Features:</h3>
+                  <p>{phoneInfo.Features ? phoneInfo.Features : 'Not available'}</p>
+                </div>
+              </section>)}
 
-              <div>
-                <h3>Battery:</h3>
-                <p>{phoneInfo.battery ? '' : 'Not available'}</p>
-              </div>
-
-              <br />
-
-              <div>
-                <h3>Display:</h3>
-                <p>{phoneInfo.display ? '' : 'Not available'}</p>
-              </div>
-
-              <br />
-
-              <div>
-                <h3>Popularity:</h3>
-                <p>{phoneInfo.popularity ? '' : 'Not available'}</p>
-              </div>
-            </section>
           </article>
 
           <aside>

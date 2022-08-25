@@ -82,6 +82,19 @@
 	align-items: center;
 }
 
+.details {
+	margin-left: 10px;
+	width: 20vw;
+}
+
+.details h3 {
+	font-size: 1.1rem;
+}
+
+.details p {
+	font-size: 0.8rem;
+}
+
 .phoneType aside {
 	width: 50vw;
 }
