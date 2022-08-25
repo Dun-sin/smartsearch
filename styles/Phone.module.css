@@ -55,8 +55,33 @@
 	margin-bottom: 1rem;
 	border-bottom: 1px solid var(--primary-color);
 	padding: 1rem;
+	cursor: pointer;
 }
 
 .phone p {
 	margin-left: 1rem;
+}
+
+.phoneType {
+	height: min(90vh, 100vh);
+	margin: 2rem;
+}
+
+.phoneType h1 {
+	color: var(--primary-color);
+}
+
+.phoneType > section {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 2rem;
+}
+
+.phoneType > section > article {
+	display: flex;
+	align-items: center;
+}
+
+.phoneType aside {
+	width: 50vw;
 }
