@@ -18,21 +18,43 @@ async function getFullPhoneInfo(phone) {
 	await page.goto(`https://www.gsmarena.com/${phone}`);
 
 	const ele = await page.evaluate(() => {
-		const elements = {};
+		const elements = {
+			Platform: document.querySelector('[data-spec="os-hl"]').textContent,
+			Storage: document.querySelector('[data-spec="storage-hl"]').textContent,
+			Ram: document.querySelector('.accent-expansion').textContent,
+			Battery: document.querySelector('.accent-battery').textContent,
+			'Main Camera':
+				document.querySelector('[data-spec="camerapixels-hl"]').textContent +
+				document.querySelector('[data-spec="camerapixels-hl"]').nextSibling
+					.textContent,
+			Display:
+				document.querySelector('[data-spec="displaysize-hl"]').textContent +
+				' ' +
+				document.querySelector('[data-spec="displayres-hl"]').textContent,
+			Price: getPrice(),
+		};
+
+		function getPrice() {
+			if (document.querySelector('.pricing') === null) return;
+
+			const firstPrice =
+				document.querySelector('.pricing tbody').firstElementChild
+					.lastElementChild.firstElementChild.innerText;
+			const secondPrice =
+				document.querySelector('.pricing tbody').lastElementChild
+					.lastElementChild.firstElementChild.innerText;
+
+			const price = 'around ' + firstPrice + ' - ' + secondPrice;
+
+			return price;
+		}
+
 		const specInfos = document.querySelectorAll('#specs-list .nfo');
 
 		specInfos.forEach((specInfo) => {
 			specInfo.parentElement.childNodes.forEach((element) => {
 				if (element.nodeName === 'TH') {
-					const allowed = [
-						'Memory',
-						'Display',
-						'Platform',
-						'Sound',
-						'Features',
-						'Main Camera',
-						'Battery',
-					];
+					const allowed = ['Sound', 'Features'];
 
 					if (allowed.includes(element.textContent)) pushElement();
 

@@ -1,6 +1,6 @@
 .container {
 	margin-top: 2rem;
-	padding: 0 8rem;
+	padding: 0 calc(10vw);
 }
 
 .header {
@@ -10,7 +10,7 @@
 }
 
 .header > p {
-	font-size: 1.6rem;
+	font-size: calc(1vw + 0.65rem);
 }
 
 .header > p span {
@@ -18,7 +18,6 @@
 }
 
 .header > div {
-	width: calc(10vw + 3rem);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -31,9 +30,11 @@
 }
 
 .header > div span:last-of-type {
+	margin-left: 10px;
+
 	background-color: var(--primary-color);
 	color: var(--text-color);
-	width: 100px;
+	width: min(100px, 100px);
 	height: 35px;
 	display: grid;
 	place-items: center;
@@ -57,7 +58,7 @@
 .section p:first-of-type {
 	font-size: calc(var(--general-font-size) + 4vw);
 	margin-top: calc(var(--general-font-size) + 10vh);
-	line-height: calc(var(--general-font-size) + 9vh);
+	line-height: 6vw;
 }
 
 .section p:first-of-type span {
@@ -87,10 +88,15 @@
 	cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 	.grid {
 		width: 100%;
 		flex-direction: column;
+	}
+
+	.section p:first-of-type {
+		margin-top: calc(var(--general-font-size) + 15vh);
+		line-height: 9vw;
 	}
 }
 

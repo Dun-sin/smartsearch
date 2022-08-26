@@ -6,17 +6,19 @@ import Link from "next/link";
 
 import styles from '../../styles/Phone.module.css'
 import search from '../../assets/akar-icons_search.svg';
+import logo from '../../assets/logo.png'
 
 export default function Phones() {
-  const [isLoading, setLoading] = useState(false)
+  const [content, setContent] = useState('nothing')
   const [result, setResult] = useState({})
 
   const inputPhoneRef = useRef(null);
 
   useEffect(() => {
     if (sessionStorage.getItem('result')) {
+      console.log(sessionStorage.getItem('result'))
       setResult(JSON.parse(sessionStorage.getItem('result')))
-      setLoading(true)
+      setContent('available')
     }
   }, [])
 
@@ -28,6 +30,7 @@ export default function Phones() {
   }
 
   async function getPhones(phone) {
+    setContent('searching')
     let response = await fetch(`http://localhost:3000/api/phones?phone=${phone}`, {
       method: "GET",
     });
@@ -35,7 +38,36 @@ export default function Phones() {
     let data = await response.json();
     sessionStorage.setItem('result', JSON.stringify(data))
     setResult(data)
-    setLoading(true)
+    setContent('available')
+  }
+
+  function handleDisplayContent() {
+    switch (content) {
+      case 'nothing':
+        return <div>Nothing to see yet, try searching...</div>
+      case 'searching':
+        return <div>Please wait..</div>
+      case 'available':
+        return result.map(({ image, link, phoneName }, id) => (
+          <Link key={id} href={{
+            pathname: "/phones/Phone",
+            query: {
+              image,
+              link,
+              phoneName
+            }
+          }} >
+            <div className={styles.phone}>
+              <Image
+                src={image}
+                alt={phoneName}
+                width={50}
+                height={50}
+              />
+              <p >{phoneName}</p>
+            </div>
+          </Link>))
+    }
   }
 
   return (
@@ -46,7 +78,12 @@ export default function Phones() {
       </Head>
       <main className={styles.container}>
         <header className={styles.header}>
-          <h2 className={styles.title}>SmartSearch</h2>
+          <Image
+            src={logo}
+            height={150}
+            width={150}
+            alt="SmartSearch"
+          />
           <div className={styles.searchBar}>
             <Image
               src={search}
@@ -61,26 +98,7 @@ export default function Phones() {
         <section className={styles.result}>
           <h2>Results</h2>
           <div>
-            {isLoading ? result.map(({ image, link, phoneName }, id) => (
-              <Link key={id} href={{
-                pathname: "/phones/Phone",
-                query: {
-                  image,
-                  link,
-                  phoneName
-                }
-              }} >
-                <div className={styles.phone}>
-                  <Image
-                    src={image}
-                    alt={phoneName}
-                    width={50}
-                    height={50}
-                  />
-                  <p >{phoneName}</p>
-                </div>
-              </Link>))
-              : <div>Still loarding</div>}
+            {handleDisplayContent()}
           </div>
         </section>
       </main>

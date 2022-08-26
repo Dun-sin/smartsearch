@@ -1,87 +1,65 @@
-const Nightmare = require('nightmare');
-const nightmare = Nightmare();
+const puppeteer = require('puppeteer');
 
-// async function getPhones() {
-// 	return await nightmare
-// 		.goto('https://www.gsmarena.com/')
-// 		.type('#topsearch-text', 'samsung')
-// 		.click('.go')
-// 		.wait('.makers > ul a')
-// 		.evaluate(() => {
-// 			const phones = [];
-// 			const links = document.querySelectorAll('.makers > ul a');
-// 			links.forEach((link) => {
-// 				const a = link.href;
-// 				const image = link.firstElementChild.getAttribute('src');
-// 				const phoneName = link.lastElementChild.innerText.replace('\n', ' ');
-// 				phones.push({
-// 					link: a,
-// 					image,
-// 					phoneName,
-// 				});
-// 			});
+(async () => {
+	let phones;
 
-// 			return phones;
-// 		})
-// 		.end()
-// 		.then((link) => link)
-// 		.catch((err) => `Search Failed: ${err}`);
-// }
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto('https://www.gsmarena.com/tecno_camon_19_pro-11618.php');
 
-// getPhones().then((x) => {
-// 	console.log(x);
-// });
+	const ele = await page.evaluate(() => {
+		const elements = {
+			Platform: document.querySelector('[data-spec="os-hl"]').textContent,
+			Storage: document.querySelector('[data-spec="storage-hl"]').textContent,
+			Ram: document.querySelector('.accent-expansion').textContent,
+			Battery: document.querySelector('.accent-battery').textContent,
+			'Main Camera':
+				document.querySelector('[data-spec="camerapixels-hl"]').textContent +
+				document.querySelector('[data-spec="camerapixels-hl"]').nextSibling
+					.textContent,
+			Display:
+				document.querySelector('[data-spec="displaysize-hl"]').textContent +
+				' ' +
+				document.querySelector('[data-spec="displayres-hl"]').textContent,
+			Price: getPrice(),
+		};
 
-// getPhones().then((x) => {
+		function getPrice() {
+			if (document.querySelector('.pricing') === null) return;
 
-// x.forEach((phone) => {
-// 	nightmare
-// 		.goto(phone)
-// 		.wait('#specs-list')
-// 		.evaluate(() => {
-// 			console.log('deosn');
-// 			const specs = document.querySelector('#specs-list');
-// 			console.log(specs);
-// 			return specs;
-// 		})
-// 		.end()
-// 		.then((spec) => console.log(spec))
-// 		.catch((err) => `Failed: ${err}`);
-// });
-// });
+			const firstPrice =
+				document.querySelector('.pricing tbody').firstElementChild
+					.lastElementChild.firstElementChild.innerText;
+			const secondPrice =
+				document.querySelector('.pricing tbody').lastElementChild
+					.lastElementChild.firstElementChild.innerText;
 
-async function fullPhone() {
-	return await nightmare
-		.goto('https://www.gsmarena.com/xiaomi_mix_fold_2-11758.php')
-		.evaluate(() => {
-			const specInfos = document.querySelectorAll('#specs-list .nfo');
-			const value = {};
+			const price = firstPrice + ' - ' + secondPrice;
 
-			specInfos.forEach((specInfo) => {
-				specInfo.parentElement.childNodes.forEach((element) => {
-					if (element.nodeName === 'TH') {
-						const allowed = [
-							'Memory',
-							'Display',
-							'Platform',
-							'Sound',
-							'Features',
-							'Main Camera',
-							'Battery',
-						];
-						if (allowed.includes(element.textContent)) pushElement();
+			return price;
+		}
 
-						function pushElement() {
-							value[element.textContent] = specInfo.innerHTML;
-						}
+		const specInfos = document.querySelectorAll('#specs-list .nfo');
+
+		specInfos.forEach((specInfo) => {
+			specInfo.parentElement.childNodes.forEach((element) => {
+				if (element.nodeName === 'TH') {
+					const allowed = ['Sound', 'Features'];
+
+					if (allowed.includes(element.textContent)) pushElement();
+
+					function pushElement() {
+						elements[element.textContent] = specInfo.innerHTML;
 					}
-				});
+				}
 			});
-			return value;
-		})
-		.end()
-		.then((specs) => specs)
-		.catch((err) => `Failed: ${err}`);
-}
+		});
 
-fullPhone().then((item) => console.log(item));
+		return elements;
+	});
+	phones = ele;
+
+	await browser.close();
+	console.log(phones);
+	// return phones;
+})();

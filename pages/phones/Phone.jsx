@@ -47,15 +47,13 @@ export default function PhonePage({
 
         <section>
           <article>
-            <div style={{ width: "calc(20vw + 2rem)", height: "60vh", position: "relative" }}>
-              <Image
-                src={image}
-                alt={phoneName}
-                objectFit="contain"
-                layout="fill"
-                quality={100}
-              />
-            </div>
+            <Image
+              src={image}
+              alt={phoneName}
+              width={250}
+              height={250}
+              quality={100}
+            />
             {isLoading ? <div>Loading Phone details</div> : (
               <section className={styles.details}>
                 <div>
@@ -65,7 +63,7 @@ export default function PhonePage({
 
                 <div>
                   <h3>Storage:</h3>
-                  <p>{phoneInfo.Memory ? phoneInfo.Memory : 'Not available'}</p>
+                  <p>{phoneInfo.Storage ? phoneInfo.Storage : 'Not available'}</p>
                 </div>
 
                 <div>
@@ -91,6 +89,11 @@ export default function PhonePage({
                 <div>
                   <h3>Features:</h3>
                   <p>{phoneInfo.Features ? phoneInfo.Features : 'Not available'}</p>
+                </div>
+
+                <div>
+                  <h3>Sound:</h3>
+                  <p>{phoneInfo.Sound ? phoneInfo.Sound : 'Not available'}</p>
                 </div>
               </section>)}
 

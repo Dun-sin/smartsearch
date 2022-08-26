@@ -2,7 +2,7 @@
 	min-height: 100vh;
 	flex-direction: column;
 	display: flex;
-	margin: 2rem;
+	margin: 0 2rem;
 }
 
 .header {
@@ -11,18 +11,12 @@
 	flex-direction: column;
 	align-items: center;
 }
-
-.title {
-	font-size: calc(var(--general-font-size) + 1vw);
-	color: var(--primary-color);
-	font-weight: 600;
-}
-
 .searchBar {
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-top: -1rem;
 }
 
 .searchBar > span {
@@ -45,7 +39,7 @@
 }
 
 .result {
-	margin: 1rem 5rem 0 5rem;
+	margin: 1rem 2vw 0 2vw;
 }
 
 .phone {
@@ -67,34 +61,46 @@
 	margin: 2rem;
 }
 
-.phoneType h1 {
+.phoneType h1,
+.phoneType aside h2 {
 	color: var(--primary-color);
 }
 
 .phoneType > section {
 	display: flex;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: center;
 	margin-top: 2rem;
 }
 
 .phoneType > section > article {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 .details {
-	margin-left: 10px;
-	width: 20vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	height: 200px;
+}
+
+.details div {
+	margin-left: 20px;
 }
 
 .details h3 {
 	font-size: 1.1rem;
+	color: var(--tertiary-color);
 }
 
 .details p {
 	font-size: 0.8rem;
+	color: var(--secondary-color);
 }
 
-.phoneType aside {
-	width: 50vw;
+.phoneType aside article {
+	color: var(--tertiary-color);
 }
