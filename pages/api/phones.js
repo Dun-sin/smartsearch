@@ -1,5 +1,4 @@
-const Nightmare = require('nightmare');
-const nightmare = Nightmare();
+const puppeteer = require('puppeteer');
 
 export default async function handler(req, res) {
 	const { method } = req;
@@ -14,33 +13,31 @@ export default async function handler(req, res) {
 
 async function getPhones(phone) {
 	console.log('started');
-	return await nightmare
-		.goto('https://www.gsmarena.com/')
-		.type('#topsearch-text', phone)
-		.click('.go')
-		.wait('.makers > ul a')
-		.evaluate(() => {
-			console.log('still going');
-			const phones = [];
-			const links = document.querySelectorAll('.makers > ul a');
-			links.forEach((link) => {
-				const a = link.href;
-				const image = link.firstElementChild.getAttribute('src');
-				const phoneName = link.lastElementChild.innerText.replace('\n', ' ');
-				phones.push({
-					link: a,
-					image,
-					phoneName,
-				});
-			});
-			console.log('got here');
+	let phones;
 
-			return phones;
-		})
-		.end()
-		.then((link) => {
-			console.log('done?');
-			return link;
-		})
-		.catch((err) => `${err}`);
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto('https://www.gsmarena.com/');
+	await page.type('#topsearch-text', phone);
+
+	await page.$eval('.go', (click) => click.click());
+
+	await page.waitForSelector('.makers > ul a');
+
+	const ele = await page.evaluate(() => {
+		const elements = [];
+		document.querySelectorAll('.makers > ul a').forEach((item) =>
+			elements.push({
+				link: item.getAttribute('href'),
+				image: item.firstElementChild.getAttribute('src'),
+				phoneName: item.lastElementChild.innerText.replace('\n', ' '),
+			}),
+		);
+		return elements;
+	});
+	phones = ele;
+
+	await browser.close();
+	console.log('done?');
+	return phones;
 }

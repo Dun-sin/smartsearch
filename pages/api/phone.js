@@ -1,5 +1,4 @@
-const Nightmare = require('nightmare');
-const nightmare = Nightmare();
+const puppeteer = require('puppeteer');
 
 export default async function handler(req, res) {
 	const { method } = req;
@@ -12,41 +11,43 @@ export default async function handler(req, res) {
 }
 
 async function getFullPhoneInfo(phone) {
-	console.log('started');
-	return await nightmare
-		.goto(phone)
-		.evaluate(() => {
-			const specInfos = document.querySelectorAll('#specs-list .nfo');
-			const value = {};
+	let phones;
 
-			specInfos.forEach((specInfo) => {
-				specInfo.parentElement.childNodes.forEach((element) => {
-					if (element.nodeName === 'TH') {
-						const allowed = [
-							'Memory',
-							'Display',
-							'Platform',
-							'Sound',
-							'Features',
-							'Main Camera',
-							'Battery',
-						];
-						if (allowed.includes(element.textContent)) pushElement();
+	const browser = await puppeteer.launch();
+	const page = await browser.newPage();
+	await page.goto(`https://www.gsmarena.com/${phone}`);
 
-						function pushElement() {
-							value[element.textContent] = specInfo.innerHTML;
-						}
+	const ele = await page.evaluate(() => {
+		const elements = {};
+		const specInfos = document.querySelectorAll('#specs-list .nfo');
+
+		specInfos.forEach((specInfo) => {
+			specInfo.parentElement.childNodes.forEach((element) => {
+				if (element.nodeName === 'TH') {
+					const allowed = [
+						'Memory',
+						'Display',
+						'Platform',
+						'Sound',
+						'Features',
+						'Main Camera',
+						'Battery',
+					];
+
+					if (allowed.includes(element.textContent)) pushElement();
+
+					function pushElement() {
+						elements[element.textContent] = specInfo.innerHTML;
 					}
-				});
+				}
 			});
-			return value;
-		})
-		.end()
-		.then((specs) => {
-			console.log('done?');
-			return specs;
-		})
-		.catch((err) => err);
-}
+		});
 
-//
+		return elements;
+	});
+	phones = ele;
+
+	await browser.close();
+	console.log('done');
+	return phones;
+}
