@@ -25,9 +25,6 @@
 		"puppeteer": "^16.2.0",
 		"semantic-release": "^19.0.3"
 	},
-	"engines": {
-		"node": "^14"
-	},
 	"config": {
 		"commitizen": {
 			"path": "./node_modules/cz-conventional-changelog"
