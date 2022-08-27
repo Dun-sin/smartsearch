@@ -23,9 +23,6 @@
 		"eslint-config-next": "12.2.5",
 		"semantic-release": "^19.0.3"
 	},
-	"engines": {
-		"node": "^14"
-	},
 	"config": {
 		"commitizen": {
 			"path": "./node_modules/cz-conventional-changelog"
