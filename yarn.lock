@@ -4105,7 +4105,7 @@
     "debug" "^4.1.1"
     "deepmerge" "^4.2.2"
 
-"puppeteer@*", "puppeteer@>5":
+"puppeteer@*", "puppeteer@^16.2.0", "puppeteer@>5":
   "integrity" "sha512-7Au6iC98rS6WEAD110V4Bxd0iIbqoFtzz9XzkG1BSofidS1VAJ881E1+GFR7Xn2Yea0hbj8n0ErzRyseMp1Ctg=="
   "resolved" "https://registry.npmjs.org/puppeteer/-/puppeteer-16.2.0.tgz"
   "version" "16.2.0"
