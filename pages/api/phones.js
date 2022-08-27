@@ -15,6 +15,16 @@ async function getPhones(phone) {
 		ignoreHTTPSErrors: true,
 	});
 	const page = await browser.newPage();
+
+	page.on('request', (request) => {
+		if (
+			request.resourceType() === 'image' ||
+			request.resourceType() === 'stylesheet'
+		)
+			request.abort();
+		else request.continue();
+	});
+
 	await page.goto('https://www.gsmarena.com/');
 	await page.type('#topsearch-text', phone);
 
