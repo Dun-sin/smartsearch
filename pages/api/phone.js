@@ -1,4 +1,10 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
+
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
+
+const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker');
+puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 
 export default async function handler(req, res) {
 	const result = await getFullPhoneInfo(req.query.link);
@@ -15,6 +21,18 @@ async function getFullPhoneInfo(phone) {
 		ignoreHTTPSErrors: true,
 	});
 	const page = await browser.newPage();
+
+	await page.setRequestInterception(true);
+
+	page.on('request', (request) => {
+		if (
+			request.resourceType() === 'image' ||
+			request.resourceType() === 'stylesheet'
+		)
+			request.abort();
+		else request.continue();
+	});
+
 	await page.goto(`https://www.gsmarena.com/${phone}`);
 
 	const ele = await page.evaluate(() => {

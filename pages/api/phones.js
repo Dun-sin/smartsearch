@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-extra');
 
 export default async function handler(req, res) {
 	const result = await getPhones(req.query.phone);
