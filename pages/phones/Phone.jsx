@@ -24,9 +24,7 @@ export default function PhonePage({
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`./api/phone?link=${link}`, {
-      method: "GET",
-    })
+    fetch(`/api/phone?link=${link}`)
       .then(res => res.json())
       .then(data => {
         setInfo(data)

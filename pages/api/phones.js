@@ -1,21 +1,21 @@
-const puppeteer = require('puppeteer');
+const chromium = require('chrome-aws-lambda');
 
 export default async function handler(req, res) {
-	const { method } = req;
-
-	switch (method) {
-		case 'GET':
-			// res.status(200).json('This works');
-			const result = await getPhones(req.query.phone);
-			await res.status(200).json(result);
-	}
+	const result = await getPhones(req.query.phone);
+	await res.status(200).json(result);
 }
 
 async function getPhones(phone) {
 	console.log('started');
 	let phones;
 
-	const browser = await puppeteer.launch();
+	const browser = await chromium.puppeteer.launch({
+		args: chromium.args,
+		defaultViewport: chromium.defaultViewport,
+		executablePath: await chromium.executablePath,
+		headless: true,
+		ignoreHTTPSErrors: true,
+	});
 	const page = await browser.newPage();
 	await page.goto('https://www.gsmarena.com/');
 	await page.type('#topsearch-text', phone);

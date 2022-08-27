@@ -16,7 +16,7 @@ export default function Phones() {
 
   useEffect(() => {
     if (sessionStorage.getItem('result')) {
-      console.log(sessionStorage.getItem('result'))
+
       setResult(JSON.parse(sessionStorage.getItem('result')))
       setContent('available')
     }
@@ -31,9 +31,7 @@ export default function Phones() {
 
   async function getPhones(phone) {
     setContent('searching')
-    let response = await fetch(`./api/phones?phone=${phone}`, {
-      method: "GET",
-    });
+    let response = await fetch(`/api/phones?phone=${phone}`);
 
     let data = await response.json();
     sessionStorage.setItem('result', JSON.stringify(data))

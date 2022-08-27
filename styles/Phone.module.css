@@ -68,6 +68,7 @@
 
 .phoneType > section {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: center;
 	margin-top: 2rem;
@@ -75,16 +76,15 @@
 
 .phoneType > section > article {
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .details {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	flex-wrap: wrap;
-	height: 200px;
+
+	width: 300px;
 }
 
 .details div {
@@ -99,6 +99,10 @@
 .details p {
 	font-size: 0.8rem;
 	color: var(--secondary-color);
+}
+
+.phoneType aside {
+	margin-top: 1rem;
 }
 
 .phoneType aside article {
