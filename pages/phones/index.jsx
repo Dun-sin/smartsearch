@@ -31,7 +31,7 @@ export default function Phones() {
 
   async function getPhones(phone) {
     setContent('searching')
-    let response = await fetch(`http://localhost:3000/api/phones?phone=${phone}`, {
+    let response = await fetch(`https://smartsearch-ten.vercel.app/api/phones?phone=${phone}`, {
       method: "GET",
     });
 
