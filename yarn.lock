@@ -988,13 +988,6 @@
 "chownr@^2.0.0":
   "version" "2.0.0"
 
-"chrome-aws-lambda@^10.1.0":
-  "integrity" "sha512-NZQVf+J4kqG4sVhRm3WNmOfzY0OtTSm+S8rg77pwePa9RCYHzhnzRs8YvNI6L9tALIW6RpmefWiPURt3vURXcw=="
-  "resolved" "https://registry.npmjs.org/chrome-aws-lambda/-/chrome-aws-lambda-10.1.0.tgz"
-  "version" "10.1.0"
-  dependencies:
-    "lambdafs" "^2.0.3"
-
 "cidr-regex@^3.1.1":
   "version" "3.1.1"
   dependencies:
@@ -2650,13 +2643,6 @@
   "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz"
   "version" "6.0.3"
 
-"lambdafs@^2.0.3":
-  "integrity" "sha512-x5k8JcoJWkWLvCVBzrl4pzvkEHSgSBqFjg3Dpsc4AcTMq7oUMym4cL/gRTZ6VM4mUMY+M0dIbQ+V1c1tsqqanQ=="
-  "resolved" "https://registry.npmjs.org/lambdafs/-/lambdafs-2.1.1.tgz"
-  "version" "2.1.1"
-  dependencies:
-    "tar-fs" "*"
-
 "language-subtag-registry@~0.3.2":
   "integrity" "sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w=="
   "resolved" "https://registry.npmjs.org/language-subtag-registry/-/language-subtag-registry-0.3.22.tgz"
@@ -3766,23 +3752,6 @@
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-2.1.1.tgz"
   "version" "2.1.1"
 
-"puppeteer-core@^10.1.0", "puppeteer-core@^16.2.0":
-  "integrity" "sha512-f1q7egbAR5IhAVb0LNhiLKD2O/WtAHS/Oeided2+8RFBZx9OjZ26sIDD7QUTrOuUXHY257ShVJNN42fANEiSXQ=="
-  "resolved" "https://registry.npmjs.org/puppeteer-core/-/puppeteer-core-16.2.0.tgz"
-  "version" "16.2.0"
-  dependencies:
-    "cross-fetch" "3.1.5"
-    "debug" "4.3.4"
-    "devtools-protocol" "0.0.1019158"
-    "extract-zip" "2.0.1"
-    "https-proxy-agent" "5.0.1"
-    "progress" "2.0.3"
-    "proxy-from-env" "1.1.0"
-    "rimraf" "3.0.2"
-    "tar-fs" "2.1.1"
-    "unbzip2-stream" "1.4.3"
-    "ws" "8.8.1"
-
 "puppeteer@^16.2.0":
   "integrity" "sha512-7Au6iC98rS6WEAD110V4Bxd0iIbqoFtzz9XzkG1BSofidS1VAJ881E1+GFR7Xn2Yea0hbj8n0ErzRyseMp1Ctg=="
   "resolved" "https://registry.npmjs.org/puppeteer/-/puppeteer-16.2.0.tgz"
@@ -4438,14 +4407,6 @@
   "integrity" "sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w=="
   "resolved" "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   "version" "1.0.0"
-
-"tar-fs@*":
-  "version" "2.1.1"
-  dependencies:
-    "chownr" "^1.1.1"
-    "mkdirp-classic" "^0.5.2"
-    "pump" "^3.0.0"
-    "tar-stream" "^2.1.4"
 
 "tar-fs@2.1.1":
   "integrity" "sha512-V0r2Y9scmbDRLCNex/+hYzvp/zyYjvFbHPNgVTKfQvVrb6guiE/fxP+XblDNR011utopbkex2nM4dHNV6GDsng=="
