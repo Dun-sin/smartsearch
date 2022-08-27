@@ -24,7 +24,7 @@ export default function PhonePage({
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://smartsearch-ten.vercel.app/api/phone?link=${link}`, {
+    fetch(`/api/phone?link=${link}`, {
       method: "GET",
     })
       .then(res => res.json())
