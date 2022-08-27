@@ -11,10 +11,8 @@ async function getPhones(phone) {
 
 	const browser = await chromium.puppeteer.launch({
 		args: chromium.args,
-		defaultViewport: chromium.defaultViewport,
 		executablePath: await chromium.executablePath,
 		headless: true,
-		ignoreHTTPSErrors: true,
 	});
 	const page = await browser.newPage();
 	await page.goto('https://www.gsmarena.com/');
