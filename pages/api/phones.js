@@ -10,7 +10,13 @@ async function getPhones(phone) {
 	let phones;
 
 	const browser = await puppeteer.launch({
-		args: ['--no-sandbox'],
+		args: [
+			'--no-sandbox',
+			'--Disable-gpu',
+			'--Disable-dev-shm-usage',
+			'–No-first-run',
+			'–No-zygote',
+		],
 		headless: true,
 		ignoreHTTPSErrors: true,
 	});
