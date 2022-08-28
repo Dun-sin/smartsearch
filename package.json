@@ -17,8 +17,7 @@
 		"puppeteer-extra-plugin-adblocker": "^2.13.5",
 		"puppeteer-extra-plugin-stealth": "^2.11.1",
 		"react": "18.2.0",
-		"react-dom": "18.2.0",
-		"sharp": "^0.30.7"
+		"react-dom": "18.2.0"
 	},
 	"devDependencies": {
 		"commitizen": "^4.2.5",
