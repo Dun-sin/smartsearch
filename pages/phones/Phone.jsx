@@ -48,7 +48,7 @@ export default function PhonePage({
             <Image
               src={image}
               alt={phoneName}
-              width={250}
+              width={200}
               height={250}
               quality={100}
             />
