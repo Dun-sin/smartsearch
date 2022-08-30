@@ -59,7 +59,7 @@ export default function PhonePage({
               src={image}
               alt={phoneName}
               width={250}
-              height={250}
+              height={300}
               quality={100}
             />
             {isLoading ? <div>Loading Phone details</div> : (
