@@ -101,10 +101,17 @@
 	color: var(--secondary-color);
 }
 
-.phoneType aside {
+.review {
 	margin-top: 1rem;
 }
 
-.phoneType aside article {
-	color: var(--tertiary-color);
+.review article {
+	color: white;
+}
+
+.review article div {
+	border: 1px solid var(--secondary-color);
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: var(--tertiary-color)
 }

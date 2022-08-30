@@ -44,7 +44,7 @@ async function getPhoneReview(phone){
     word[0] = word[0] + '-reviews'
     word = word.join('-')
     word = 'https://www.gsmarena.com/' + word
-    console.log(word)
+    
 	await page.goto(word);
 
 	const ele = await page.evaluate(() => {

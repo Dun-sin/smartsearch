@@ -107,12 +107,13 @@ export default function PhonePage({
 
           </article>
 
-          <aside>
+          <aside className={styles.review}>
             <h2>Reviews</h2>
             <article>
               {review ? review.map((comment, id) => (
                 <div key={id}>
                   {comment}
+                  
                 </div>
               )) : 'oops, Looks like no one is talking about this phone'}
             </article>
