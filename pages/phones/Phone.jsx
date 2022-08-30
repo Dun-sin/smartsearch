@@ -22,7 +22,9 @@ export default function PhonePage({
 }) {
   const [phoneInfo, setInfo] = useState({})
   const [isLoading, setLoading] = useState(true);
+  const [review, setReview] = useState(null)
 
+  
   useEffect(() => {
     fetch(`/api/phone?link=${link}`)
       .then(res => res.json())
@@ -33,6 +35,14 @@ export default function PhonePage({
       .catch(err => console.log(err))
   }, [link])
 
+  useEffect(() => {
+    fetch(`/api/reviews?link=${link}`)
+      .then(res => res.json())
+      .then(data => {
+        setReview(data)
+      })
+      .catch(err => console.log(err))
+  }, [link])
 
   return (
     <>
@@ -100,7 +110,11 @@ export default function PhonePage({
           <aside>
             <h2>Reviews</h2>
             <article>
-              {phoneInfo.reviews ? '' : 'oops, Looks like no one is talking about this phone'}
+              {review ? review.map((comment, id) => (
+                <div key={id}>
+                  {comment}
+                </div>
+              )) : 'oops, Looks like no one is talking about this phone'}
             </article>
           </aside>
         </section>
