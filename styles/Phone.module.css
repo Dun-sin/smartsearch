@@ -115,3 +115,10 @@
 	margin-bottom: 10px;
 	background-color: var(--tertiary-color)
 }
+
+@media (max-width: 615px) {
+	.details div{
+		margin: 5px;
+		margin-left: 20px;
+	}
+}
