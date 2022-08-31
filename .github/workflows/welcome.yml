@@ -1,0 +1,9 @@
+  welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: EddieHubCommunity/gh-action-community/src/welcome@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: '<h1>It''s great having you contribute to this project by creating an issue</h1> Make sure you are assigned to this before you work on it, Thank you! Welcome to the community :nerd_face:'
+          pr-message: '<h1>It''s great having you contribute to this project by submitting a pull request</h1> Make sure you filled the template properly, Thank you! Welcome to the community :nerd_face:'
