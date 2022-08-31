@@ -33,8 +33,12 @@ To get a local copy up and running follow these simple steps
     ```bash
     cd smartsearch
     ```
+4. Install Project dependencies
+    ```bash
+    npm install
+    ``` 
 
-4. Run the development server:
+5. Run the development server:
     ```bash
     npm run dev
     ``` 
@@ -48,11 +52,12 @@ To get a local copy up and running follow these simple steps
     ```bash
     git add <files>
     ``` 
+    > NOTE: don't commit the package.json
 3. Commit your work 
     ```bash
-    git commit -m 'your message'
+    git cz
     ```
-  
+    > Note: use conventional commit method - ![read about it here](https://www.conventionalcommits.org/en/v1.0.0/)
 4. Push your work to the remote URL 
     ```bash
     git push origin <your-branch>
