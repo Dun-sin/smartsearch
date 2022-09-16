@@ -2,17 +2,17 @@
 
 ### Rules
 - Don't create a pull request on an issue without given permission to work on it.
-- Don't work on more than one issue at a time
-- Check if  your issue exist or not. If it exist, don't create a duplicate one
-- Have respect for other contributors and be polite
+- Don't work on more than one issue at a time.
+- Check if  your issue exist or not. If it exist, don't create a duplicate one.
+- Have respect for other contributors and be polite.
 
 ## Prerequisite skills for contributing
 - [Next.js](https://nextjs.org/)
 
 ## How to contribute ? 😕
-- Look in to the existing [issues](https://github.com/Dun-sin/smartsearch/issues) or [create a new one](https://github.com/Dun-sin/smartsearch/issues/new/choose)
-- [Fork](https://github.com/Dun-sin/smartsearch/fork) the repository and create a new branch inside the forked repository and implement your work inside it
-- Finally commit your work and create a pull request on the main repository from your branch of the forked repository
+- Look in to the existing [issues](https://github.com/Dun-sin/smartsearch/issues) or [create a new one](https://github.com/Dun-sin/smartsearch/issues/new/choose).
+- [Fork](https://github.com/Dun-sin/smartsearch/fork) the repository and create a new branch inside the forked repository and implement your work inside it.
+- Finally commit your work and create a pull request on the main repository from your branch of the forked repository.
 
 ## 🌟 How to create a pull request ?
 
