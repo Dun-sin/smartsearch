@@ -39,6 +39,7 @@ export default function PhonePage({
     fetch(`/api/reviews?link=${link}`)
       .then(res => res.json())
       .then(data => {
+        console.log(data[2])
         setReview(data)
       })
       .catch(err => console.log(err))
@@ -104,7 +105,6 @@ export default function PhonePage({
                   <p>{phoneInfo.Sound ? phoneInfo.Sound : 'Not available'}</p>
                 </div>
               </section>)}
-
           </article>
 
           <aside className={styles.review}>
@@ -113,9 +113,8 @@ export default function PhonePage({
               {review ? review.map((comment, id) => (
                 <div key={id}>
                   {comment}
-                  
                 </div>
-              )) : 'oops, Looks like no one is talking about this phone'}
+              )) : isLoading ? "Loading Reviews" : <span className={styles.noReview}>oops, Looks like no one is talking about this phone</span>}
             </article>
           </aside>
         </section>
