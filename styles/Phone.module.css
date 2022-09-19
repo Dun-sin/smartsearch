@@ -68,9 +68,6 @@
 
 .phoneType > section {
 	display: flex;
-	/* flex-wrap: wrap;
-	flex-direction: column;
-	justify-content: center; */
 	margin-top: 2rem;
 	justify-content: space-between;
 }
@@ -113,7 +110,6 @@
 	overflow-y: scroll;
 }
 
-/* changes */
 .review > h2{
 	text-align: center;
 	padding: 20px 0px;
@@ -127,11 +123,6 @@
 
 
 
-/* changes */
-
-/* .review article {
-	color: white;
-} */
 
 .review article div {
 	border: 1px solid var(--secondary-color);
