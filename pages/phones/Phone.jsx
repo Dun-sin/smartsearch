@@ -62,7 +62,7 @@ export default function PhonePage({
               height={300}
               quality={100}
             />
-            {isLoading ? <div>Loading Phone details</div> : (
+            {isLoading ? <div className={styles.label}>Loading Phone details</div> : (
               <section className={styles.details}>
                 <div>
                   <h3>Price:</h3>
@@ -115,7 +115,7 @@ export default function PhonePage({
                   {comment}
                   
                 </div>
-              )) : 'oops, Looks like no one is talking about this phone'}
+              )) : isLoading ? <span className={styles.label}>Loading Reviews please wait...</span> : <span className={styles.label}>oops, Looks like no one is talking about this phone</span>}
             </article>
           </aside>
         </section>
