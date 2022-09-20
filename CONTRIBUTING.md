@@ -3,7 +3,7 @@
 ### Rules
 - Don't create a pull request on an issue without given permission to work on it.
 - Don't work on more than one issue at a time
-- Check if the your issue exits or not if it exits, don't create a duplicate one
+- Check if your issue exist or not. If it exist, don't create a duplicate one
 - Have respect for other contributors and be polite
 
 ## Prerequisite skills for contributing
