@@ -2,7 +2,7 @@
 <div align="center">
     <img src="https://user-images.githubusercontent.com/78784850/187615092-075c157d-5f88-4b9d-984e-e7260f885914.png" width="120px">
     <h2>Smart Search</h2>
-    <p>Find the RIGHT phone for you!</p>
+    <p>Search a phone!</p>
     <p align="center">
         <a href="https://smartsearch.up.railway.app/">View Demo</a>
         ·
