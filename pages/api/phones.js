@@ -1,4 +1,9 @@
 const puppeteer = require('puppeteer-extra');
+const StealthPlugin = require('puppeteer-extra-plugin-stealth');
+puppeteer.use(StealthPlugin());
+
+const AdblockerPlugin = require('puppeteer-extra-plugin-adblocker');
+puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 
 export default async function handler(req, res) {
 	const result = await getPhones(req.query.phone);
@@ -22,13 +27,13 @@ async function getPhones(phone) {
 	});
 	const page = await browser.newPage();
 
+	await page.setDefaultNavigationTimeout(0);
+	await page.setRequestInterception(true);
 	page.on('request', (request) => {
-		if (
-			request.resourceType() === 'image' ||
-			request.resourceType() === 'stylesheet'
-		)
-			request.abort();
-		else request.continue();
+		if (['image', 'font', 'script'].indexOf(request.resourceType()) !== -1) {
+			return request.abort();
+		}
+		request.continue();
 	});
 
 	await page.goto('https://www.gsmarena.com/');
